@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout>
+  <section class="text-center">
+    <h1 class="font-display text-4xl text-plum-700 sm:text-5xl">{site.name}</h1>
+    <p class="mx-auto mt-4 max-w-xl text-lg">{site.tagline}</p>
+    <a
+      href={site.facebookGroupUrl}
+      class="mt-8 inline-block rounded-full bg-plum-500 px-6 py-3 font-semibold text-white hover:bg-plum-700"
+    >
+      Join the group
+    </a>
+  </section>
+</BaseLayout>

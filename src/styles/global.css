@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --color-plum-50: #fbf5f8;
+  --color-plum-100: #f5e6ee;
+  --color-plum-300: #d9a2bf;
+  --color-plum-500: #a63d6b;
+  --color-plum-700: #6e2445;
+  --color-plum-900: #3d1226;
+}
