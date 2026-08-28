@@ -1,7 +1,7 @@
 # Ladies in High Heels Plymouth
 
 Static website for the Plymouth social club, built with Astro and Tailwind CSS and
-deployed to Cloudflare Pages.
+deployed to Netlify.
 
 ## Running it
 
