@@ -5,6 +5,8 @@ export const site = {
   location: 'Plymouth, Devon',
   memberCount: 478,
   foundedYear: 2024,
+  /** Path under /public. Leave empty to show the plain gradient hero instead. */
+  coverImage: '',
   facebookGroupUrl: 'https://www.facebook.com/groups/REPLACE-ME',
   contactEmail: 'hello@example.com',
   nav: [

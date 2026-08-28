@@ -1,0 +1,55 @@
+---
+interface Photo {
+  src: string;
+  alt: string;
+  album: string;
+}
+
+interface Props {
+  photos: Photo[];
+}
+
+const { photos } = Astro.props;
+---
+
+<section>
+  <div class="flex flex-wrap items-baseline justify-between gap-2">
+    <h2 class="font-display text-3xl text-plum-700">From our nights out</h2>
+    <a href="/gallery" class="text-plum-500 underline hover:text-plum-700">See the full gallery</a>
+  </div>
+
+  {
+    photos.length > 0 ? (
+      <ul class="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        {photos.map((photo) => (
+          <li class="overflow-hidden rounded-xl bg-plum-100">
+            <a href="/gallery" class="group block">
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                decoding="async"
+                class="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <ul class="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4" aria-hidden="true">
+        {[0, 1, 2, 3].map(() => (
+          <li class="from-plum-100 to-plum-300 aspect-square rounded-xl bg-gradient-to-br" />
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    photos.length === 0 && (
+      <p class="mt-4 max-w-prose text-sm text-plum-700">
+        Photos from our meetups will appear here once members have confirmed they are happy to be
+        pictured on the public site.
+      </p>
+    )
+  }
+</section>
