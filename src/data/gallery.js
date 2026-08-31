@@ -3,29 +3,38 @@
  *
  * Drop the photos into public/images/<album-id>/ then list them here. Every photo
  * needs an `alt` description — it is read aloud by screen readers and shown if the
- * image fails to load.
+ * image fails to load. The first photo in the list becomes the album cover.
  *
- * NOTE: the entries below are examples so the gallery layout can be seen while it
- * is being built. Delete the ones you do not want before sharing the site.
+ * The covers below are deliberately blurred, so the colour and mood of the evening
+ * show without anyone being identifiable. Once members have agreed to appear, add
+ * the real photographs here and the blurred covers can go.
+ *
+ * To make another blurred cover:
+ *   node scripts/make-cover.mjs --out public/images/<album>/cover.jpg \
+ *     --title "Event title" --photo <the original photo>
  */
 
 export const albums = [
   {
-    id: '2026-09-cocktail-night',
-    title: 'Cocktail Night at The Treasury',
-    date: '2026-09-19',
-    photos: [],
-  },
-  {
     id: '2026-08-colours-of-summer',
-    title: 'Colours of Summer',
+    title: 'The Colours of the Summer',
     date: '2026-08-21',
-    photos: [],
+    photos: [
+      {
+        src: '/images/2026-08-colours-of-summer/cover.jpg',
+        alt: 'A blurred photograph of the group in summer colours, with the event name across it',
+      },
+    ],
   },
   {
-    id: '2026-07-harbour-supper',
-    title: 'Supper on the Barbican',
-    date: '2026-07-18',
-    photos: [],
+    id: '2026-06-summer-cruise',
+    title: 'Summer Cruise & Lunch',
+    date: '2026-06-13',
+    photos: [
+      {
+        src: '/images/2026-06-summer-cruise/cover.jpg',
+        alt: 'A blurred photograph from the summer cruise, with the event name across it',
+      },
+    ],
   },
 ];
