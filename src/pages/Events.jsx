@@ -29,7 +29,8 @@ export default function Events() {
           <div className="card-body text-center p-5">
             <p className="heading-script text-gold display-6 mb-2">Being planned</p>
             <p className="text-ink-soft mb-4">
-              The next date is not fixed yet. Meetups are announced in the Facebook group first.
+              We are sorting out the venue for our next get-together. As soon as it is settled it
+              will appear here — and in the Facebook group first.
             </p>
             <Button href={site.facebookGroupUrl}>Join the group</Button>
           </div>

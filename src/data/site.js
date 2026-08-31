@@ -6,13 +6,13 @@ export const site = {
   strapline: 'Celebrate friendship. Inspire each other. Shine together.',
   location: 'Plymouth, Devon',
   memberCount: 478,
-  founded: 'August 2024',
+  founded: 'June 2024',
   typicalAttendance: '10–20',
 
   facebookGroupUrl: 'https://www.facebook.com/groups/1010764360646001',
-  // TODO: replace with a real address — the gallery page promises people can
-  // email here to have a photo removed.
-  contactEmail: 'hello@example.com',
+  // Left empty on purpose: an address that nobody reads is worse than none. Fill
+  // this in and the Contact link and the gallery's email route appear by themselves.
+  contactEmail: '',
 
   // Path under /public. Set to '' to fall back to a plain gradient hero.
   coverImage: '/images/hero.jpg',

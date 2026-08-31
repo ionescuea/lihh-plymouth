@@ -27,10 +27,10 @@ export default function EventTeaser({ event }) {
         ) : (
           <>
             <h2 className="heading-script text-gold display-5 mt-2">Being planned</h2>
-            <p className="text-ink-soft fs-5 mt-3">
-              The next date is not fixed yet. Meetups are announced in the Facebook group first, so
-              join there to hear about it as soon as it is set.
-            </p>
+          <p className="text-ink-soft fs-5 mt-3">
+            We are sorting out the venue for our next get-together. Meetups are announced in the
+            Facebook group first, so join there to hear about it as soon as it is set.
+          </p>
             <div className="mt-4">
               <Button href={site.facebookGroupUrl}>Join the group</Button>
             </div>

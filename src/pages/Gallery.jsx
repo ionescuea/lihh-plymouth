@@ -53,9 +53,14 @@ export default function Gallery() {
             would like a photo of you removed, message an admin in the{' '}
             <a href={site.facebookGroupUrl} target="_blank" rel="noopener">
               Facebook group
-            </a>{' '}
-            or email <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>, and we will
-            take it down — no explanation needed.
+            </a>
+            {site.contactEmail && (
+              <>
+                {' '}
+                or email <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+              </>
+            )}
+            , and we will take it down — no explanation needed.
           </p>
         </div>
       </aside>

@@ -79,10 +79,14 @@ export default function Layout() {
             >
               Facebook group
             </a>
-            <span aria-hidden="true"> · </span>
-            <a className="link-offset-2" href={`mailto:${site.contactEmail}`}>
-              Contact
-            </a>
+            {site.contactEmail && (
+              <>
+                <span aria-hidden="true"> · </span>
+                <a className="link-offset-2" href={`mailto:${site.contactEmail}`}>
+                  Contact
+                </a>
+              </>
+            )}
           </p>
         </div>
       </footer>

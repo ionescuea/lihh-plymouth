@@ -15,6 +15,9 @@
 
 export const events = [
   {
+    // Off for now while another venue is discussed. Set draft back to false (and
+    // check the date) to put it back on the site.
+    draft: true,
     id: '2026-09-moulin-rouge',
     title: 'Moulin Rouge at the Theatre Royal',
     date: '2026-09-18',
