@@ -4,3 +4,11 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# React Router handles the addresses in the browser, so every request has to be
+# served the same index.html and let the app decide what to show. Without this,
+# loading /about directly (or refreshing on it) would return a 404 from Netlify.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

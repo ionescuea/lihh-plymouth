@@ -1,13 +1,274 @@
-@import 'tailwindcss';
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
-@theme {
+/* ---------------------------------------------------------------------------
+   Brand colours and fonts, sampled from the club leaflet.
+   Change a value here and it updates everywhere on the site.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --cream-light: #f7f2ea;
+  --cream: #f3ece4;
+  --cream-dark: #e6ddcf;
+
+  --gold-light: #e6c383;
+  --gold: #a67c1f;
+  --gold-dark: #8a6a15;
+
+  --ink: #2f2a26;
+  --ink-soft: #4a423a;
+  --ink-faint: #6b6157;
+
   --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Great Vibes', 'Segoe Script', cursive;
   --font-body: 'Inter', system-ui, sans-serif;
 
-  --color-plum-50: #fbf5f8;
-  --color-plum-100: #f5e6ee;
-  --color-plum-300: #d9a2bf;
-  --color-plum-500: #a63d6b;
-  --color-plum-700: #6e2445;
-  --color-plum-900: #3d1226;
+  /* Bootstrap reads these, so its own components pick up the brand colours. */
+  --bs-body-font-family: var(--font-body);
+  --bs-body-color: var(--ink);
+  /* Bootstrap builds link colours from these RGB triples, so both are needed. */
+  --bs-link-color: var(--gold);
+  --bs-link-hover-color: var(--gold-dark);
+  --bs-link-color-rgb: 166, 124, 31;
+  --bs-link-hover-color-rgb: 138, 106, 21;
+  --bs-border-radius-xl: 1.5rem;
+}
+
+body {
+  background-color: var(--cream-light);
+}
+
+/* Bootstrap's container widens to 1140px on large screens, which makes the text
+   lines uncomfortably long for a small content site. Capped to keep the original
+   narrower, more magazine-like column. */
+@media (min-width: 992px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Brand helpers. Bootstrap has no equivalent of these, so they are ours.
+   --------------------------------------------------------------------------- */
+
+.bg-cream {
+  background-color: var(--cream);
+}
+.bg-cream-light {
+  background-color: var(--cream-light);
+}
+.bg-ink {
+  background-color: var(--ink);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+.text-gold-light {
+  color: var(--gold-light);
+}
+.text-ink {
+  color: var(--ink);
+}
+.text-ink-soft {
+  color: var(--ink-soft);
+}
+.text-cream {
+  color: var(--cream);
+}
+
+.border-gold {
+  border-color: rgba(230, 195, 131, 0.5) !important;
+}
+
+/* Wide-tracked serif capitals, as used for "MONTHLY" on the leaflet. */
+.heading-caps {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+
+/* Flowing calligraphy, as used for "Get-Together" on the leaflet. */
+.heading-script {
+  font-family: var(--font-script);
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+/* Buttons in the club's gold rather than Bootstrap's blue. */
+.btn-gold {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--gold-dark);
+  --bs-btn-border-color: var(--gold-dark);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--gold);
+  --bs-btn-hover-border-color: var(--gold);
+  --bs-btn-active-bg: var(--gold);
+  --bs-btn-active-border-color: var(--gold);
+}
+
+.btn-outline-gold {
+  --bs-btn-color: var(--ink);
+  --bs-btn-bg: rgba(255, 255, 255, 0.95);
+  --bs-btn-border-color: var(--gold-light);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: var(--gold);
+}
+
+.btn-gold,
+.btn-outline-gold {
+  border-radius: 50rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------------------
+   Hero
+   --------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.hero-image,
+.hero-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-fallback {
+  background: linear-gradient(135deg, var(--cream) 0%, var(--gold-light) 50%, var(--gold) 100%);
+}
+
+/* Darkens the photograph so white text stays readable over it. */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(47, 42, 38, 0.75),
+    rgba(47, 42, 38, 0.55),
+    rgba(47, 42, 38, 0.7)
+  );
+}
+
+.hero-content {
+  position: relative;
+}
+
+/* Slow drift across the hero photograph, so the page has some life without
+   asking for attention. Switched off for anyone who prefers reduced motion. */
+@keyframes hero-drift {
+  from {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.16) translate3d(-2%, -1.5%, 0);
+  }
+}
+
+.hero-drift {
+  animation: hero-drift 32s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Decorative gold brush strokes lifted from the leaflet
+   --------------------------------------------------------------------------- */
+
+.ornament-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ornament {
+  position: absolute;
+  width: 8rem;
+}
+
+@media (min-width: 576px) {
+  .ornament {
+    width: 11rem;
+  }
+}
+
+.ornament-start {
+  top: 7rem;
+  left: -1.5rem;
+  opacity: 0.6;
+}
+
+.ornament-end {
+  right: -2rem;
+  bottom: 10rem;
+  opacity: 0.5;
+  transform: rotate(180deg);
+}
+
+/* ---------------------------------------------------------------------------
+   Gallery
+   --------------------------------------------------------------------------- */
+
+.gallery-tile {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-link:hover .gallery-tile {
+  transform: scale(1.05);
+}
+
+.gallery-placeholder {
+  aspect-ratio: 1 / 1;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, var(--cream) 0%, var(--gold-light) 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   Navigation
+   --------------------------------------------------------------------------- */
+
+.site-nav .nav-link {
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.site-nav .nav-link:hover,
+.site-nav .nav-link.active {
+  color: var(--gold-dark);
+  font-weight: 600;
+}
+
+.site-logo {
+  height: 3.5rem;
+  width: auto;
+}
+
+@media (min-width: 576px) {
+  .site-logo {
+    height: 4rem;
+  }
 }

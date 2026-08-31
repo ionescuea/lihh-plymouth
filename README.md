@@ -1,36 +1,61 @@
 # Ladies in High Heels Plymouth
 
-Static website for the Plymouth social club, built with Astro and Tailwind CSS and
+Website for the Plymouth social club. Built with React, Vite and Tailwind CSS,
 deployed to Netlify.
 
 ## Running it
 
 ```bash
 npm install
-npm run dev      # local site at http://localhost:4321
-npm run build    # static output in dist/
-npm run preview  # serve the built site
-npm run check    # type-check .astro files and content schemas
+npm run dev      # local site, address is printed in the terminal
+npm run build    # production files land in dist/
+npm run preview  # serve the built files to check them
 ```
 
-Requires Node 20 or newer.
+Requires Node 20 or newer. Leave `npm run dev` running while you work — it
+refreshes the browser as you save.
 
-## Adding content
+## Where things live
 
-| Task | What to do |
+```
+index.html            page shell, tab title, Facebook share tags
+src/main.jsx          starts the app
+src/App.jsx           list of pages and their addresses
+src/components/       reusable pieces (header/footer, buttons, cards)
+src/pages/            one file per page
+src/data/             the content you will edit most often
+src/styles/global.css colours, fonts and animations
+public/images/        photos and artwork
+scripts/              one-off image preparation tools
+```
+
+## Editing content
+
+Everything routine lives in `src/data/`, in plain JavaScript:
+
+| Task | File |
 | --- | --- |
-| Add an event | Create `src/content/events/YYYY-MM-slug.md` with `title`, `date`, `venue` |
-| Add a photo album | Create `src/content/gallery/slug.md` and list photos under `photos` |
-| Add photos | Drop the full-size files into `public/images/<album-slug>/` |
-| Change club details | Edit `src/data/site.ts` |
+| Club name, Facebook link, contact email, menu | `site.js` |
+| Add or edit a meetup | `events.js` |
+| Add a photo album | `gallery.js` |
 
-Frontmatter is validated by the schemas in `src/content.config.ts`, so a typo in a
-date or a missing venue fails the build rather than quietly breaking a page.
+To add photos, drop the files into `public/images/<album-id>/` and list them in
+`gallery.js`. Set `draft: true` on an event to hide it from the site.
 
-Set `draft: true` on an event to keep it out of the published site.
+## Image tools
+
+These regenerate artwork from a source image; run them only when the source changes.
+
+```bash
+node scripts/flatten-logo.mjs <source.png> public/images/logo.png
+node scripts/extract-ornament.mjs <leaflet.png> public/images/ornament-gold.png
+node scripts/make-og-image.mjs
+```
 
 ## Before going live
 
-- Replace `facebookGroupUrl` and `contactEmail` in `src/data/site.ts`.
+- Replace `facebookGroupUrl` and `contactEmail` in `src/data/site.js`.
+- Update the `og:url` and `og:image` addresses in `index.html` to the real domain,
+  otherwise Facebook link previews will not show the image.
 - Confirm photo consent with members before publishing group photos.
-- Point `site` in `astro.config.mjs` at the final domain.
+- Replace `public/images/hero.jpg` with a higher-resolution photograph.

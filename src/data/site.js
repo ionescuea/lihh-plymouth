@@ -1,14 +1,20 @@
+// Club details used across the site. Safe to edit by hand.
+
 export const site = {
   name: 'Ladies in High Heels Plymouth',
   shortName: 'LIHH Plymouth',
-  tagline: 'A friendly Plymouth social club for women who love to dress up and go out.',
+  strapline: 'Celebrate friendship. Inspire each other. Shine together.',
   location: 'Plymouth, Devon',
   memberCount: 478,
   foundedYear: 2024,
-  /** Path under /public. Leave empty to show the plain gradient hero instead. */
-  coverImage: '',
+
+  // TODO: replace both of these with the real ones before going live.
   facebookGroupUrl: 'https://www.facebook.com/groups/REPLACE-ME',
   contactEmail: 'hello@example.com',
+
+  // Path under /public. Set to '' to fall back to a plain gradient hero.
+  coverImage: '/images/hero.jpg',
+
   nav: [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
@@ -16,4 +22,4 @@ export const site = {
     { href: '/events', label: 'Events' },
     { href: '/join', label: 'Join' },
   ],
-} as const;
+};
