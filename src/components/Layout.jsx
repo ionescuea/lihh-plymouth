@@ -17,7 +17,7 @@ export default function Layout() {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100 position-relative overflow-hidden">
+    <div className="page-shell d-flex flex-column min-vh-100 position-relative">
       {/* Gold brush strokes lifted from the club leaflet, sitting behind the content. */}
       <div className="ornament-layer" aria-hidden="true">
         <img src="/images/ornament-gold.png" alt="" className="ornament ornament-start" />
@@ -25,7 +25,7 @@ export default function Layout() {
       </div>
 
       {/* bg-cream is the exact background baked into logo.png, so the logo sits flush. */}
-      <header className="bg-cream border-bottom border-gold">
+      <header className="bg-cream border-bottom border-gold sticky-top">
         <nav className="navbar navbar-expand-md site-nav container py-3">
           <NavLink to="/" className="navbar-brand p-0" onClick={closeMenu}>
             <img src="/images/logo.png" alt={site.name} className="site-logo" />

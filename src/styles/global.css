@@ -296,13 +296,32 @@ body {
   font-weight: 600;
 }
 
+/* `overflow: clip` rather than `hidden`: it still stops the decorative ornaments
+   causing sideways scroll, but does not create a scroll container, which would
+   stop the sticky header from sticking. */
+.page-shell {
+  overflow-x: clip;
+}
+
+/* Keeps the bar compact enough that it does not eat the screen on a phone. */
 .site-logo {
-  height: 3.5rem;
+  height: 2.75rem;
   width: auto;
 }
 
 @media (min-width: 576px) {
   .site-logo {
-    height: 4rem;
+    height: 3.5rem;
+  }
+}
+
+/* The menu drops down over the page on small screens rather than pushing it. */
+@media (max-width: 767.98px) {
+  .site-nav .navbar-collapse {
+    background-color: var(--cream);
+    border-top: 1px solid rgba(230, 195, 131, 0.5);
+    margin-top: 0.75rem;
+    max-height: 70vh;
+    overflow-y: auto;
   }
 }
