@@ -315,6 +315,13 @@ body {
   }
 }
 
+/* Bootstrap's container only allows 12px each side, which leaves the logo and the
+   burger button almost touching the screen edges on a phone. */
+.site-nav {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 /* The menu drops down over the page on small screens rather than pushing it. */
 @media (max-width: 767.98px) {
   .site-nav .navbar-collapse {
@@ -323,5 +330,14 @@ body {
     margin-top: 0.75rem;
     max-height: 70vh;
     overflow-y: auto;
+  }
+
+  .site-nav .navbar-nav {
+    padding: 0.5rem 0.25rem 0.25rem;
+  }
+
+  .site-nav .nav-link {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
   }
 }

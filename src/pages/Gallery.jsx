@@ -50,9 +50,12 @@ export default function Gallery() {
           <h2 className="heading-caps text-gold fs-6 mb-2">Photos of you</h2>
           <p className="text-ink-soft mb-0">
             We only publish photos here when members are happy to appear on the public site. If you
-            would like a photo of you removed, email{' '}
-            <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a> and we will take it down
-            — no explanation needed.
+            would like a photo of you removed, message an admin in the{' '}
+            <a href={site.facebookGroupUrl} target="_blank" rel="noopener">
+              Facebook group
+            </a>{' '}
+            or email <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>, and we will
+            take it down — no explanation needed.
           </p>
         </div>
       </aside>
