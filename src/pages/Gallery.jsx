@@ -1,13 +1,49 @@
 import { site } from '../data/site.js';
+import { albums } from '../data/gallery.js';
+import { formatShort } from '../utils/date.js';
 import { usePageTitle } from '../utils/usePageTitle.js';
 
 export default function Gallery() {
   usePageTitle('Gallery');
 
+  const sorted = [...albums].sort((a, b) => new Date(b.date) - new Date(a.date));
+
   return (
     <>
-      <h1 className="heading-caps text-ink fs-2">Gallery</h1>
-      <p className="text-ink-soft mt-3">Coming soon.</p>
+      <header className="text-center">
+        <h1 className="heading-caps text-ink fs-2">Gallery</h1>
+        <p className="heading-script text-gold display-5 mt-2">Our get-togethers</p>
+      </header>
+
+      <div className="row g-4 mt-1">
+        {sorted.map((album) => (
+          <div className="col-12 col-sm-6 col-lg-4" key={album.id}>
+            <article className="card border-gold rounded-4 h-100 overflow-hidden">
+              {album.photos.length > 0 ? (
+                <img
+                  src={album.photos[0].src}
+                  alt={album.photos[0].alt}
+                  loading="lazy"
+                  className="album-cover"
+                />
+              ) : (
+                <div className="album-cover album-cover-empty" aria-hidden="true" />
+              )}
+
+              <div className="card-body p-4">
+                <h2 className="heading-caps text-ink fs-6 mb-1">{album.title}</h2>
+                <p className="text-ink-soft small mb-0">
+                  <time dateTime={album.date}>{formatShort(album.date)}</time>
+                  <span aria-hidden="true"> · </span>
+                  {album.photos.length > 0
+                    ? `${album.photos.length} photo${album.photos.length === 1 ? '' : 's'}`
+                    : 'Photos coming soon'}
+                </p>
+              </div>
+            </article>
+          </div>
+        ))}
+      </div>
 
       <aside className="card border-gold rounded-4 mt-5">
         <div className="card-body p-4">

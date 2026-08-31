@@ -6,7 +6,7 @@ export default function GalleryHighlights({ photos }) {
       <div className="d-flex flex-wrap align-items-baseline justify-content-between gap-2">
         <h2 className="mb-0">
           <span className="heading-caps text-ink fs-3">From our</span>{' '}
-          <span className="heading-script text-gold display-6">nights out</span>
+          <span className="heading-script text-gold display-6">get-togethers</span>
         </h2>
         <Link to="/gallery" className="small">
           See the full gallery

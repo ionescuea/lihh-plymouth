@@ -50,10 +50,11 @@ export default function About() {
         </h2>
 
         <p className="text-ink-soft mx-auto mt-3 text-center" style={{ maxWidth: '42rem' }}>
-          We get together most months, somewhere new each time — usually a restaurant or bar around
-          Plymouth. Every meetup has its own dress theme, so there is always a good excuse to make
-          an effort. Expect {site.typicalAttendance} ladies on the night: big enough for a proper
-          buzz, small enough to actually talk to people.
+          We get together most months, somewhere new each time — a restaurant, a bar, or somewhere
+          worth spending an afternoon. Some are evenings out, some are days or half days. Every
+          meetup has its own dress theme, so there is always a good excuse to make an effort. Expect{' '}
+          {site.typicalAttendance} ladies along: big enough for a proper buzz, small enough to
+          actually talk to people.
         </p>
 
         <div className="row g-4 mt-1">
