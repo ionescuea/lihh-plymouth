@@ -1,6 +1,9 @@
 node_modules/
 dist/
 .astro/
+
+# Private working notes — kept on this machine, not pushed to GitHub.
+docs/
 .env
 .env.production
 .DS_Store

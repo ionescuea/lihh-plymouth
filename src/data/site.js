@@ -6,7 +6,8 @@ export const site = {
   strapline: 'Celebrate friendship. Inspire each other. Shine together.',
   location: 'Plymouth, Devon',
   memberCount: 478,
-  foundedYear: 2024,
+  founded: 'August 2024',
+  typicalAttendance: '10–20',
 
   // TODO: replace both of these with the real ones before going live.
   facebookGroupUrl: 'https://www.facebook.com/groups/REPLACE-ME',
